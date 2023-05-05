@@ -22,7 +22,12 @@ final class PokemonListAssembler {
     private static func makeViewModel(
         coordinator: PokemonListCoordinatorProtocol
     ) -> PokemonListVMProtocol {
-        return PokemonListVM(coordinator: coordinator)
+        return PokemonListVM(coordinator: coordinator,
+                             adapter: makeAdapter())
+    }
+    
+    private static func makeAdapter() -> PokemonListAdapterProtocol {
+        return PokemonListAdapter()
     }
     
 }

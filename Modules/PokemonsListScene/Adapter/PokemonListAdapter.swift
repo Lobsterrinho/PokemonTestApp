@@ -14,11 +14,23 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     
     func setupTableView(_ tableView: UITableView) {
         self.tableView = tableView
+        setupTableView()
     }
     
     private func setupTableView() {
+        registerCells()
         tableView?.delegate = self
         tableView?.dataSource = self
+        tableView?.rowHeight = 50.0
+    }
+    
+    private func reloadData() {
+        tableView?.reloadData()
+    }
+    
+    private func registerCells() {
+        tableView?.register(PokemonListTableCell.self,
+                            forCellReuseIdentifier: "\(PokemonListTableCell.self)")
     }
     
 }
@@ -26,13 +38,16 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
 //MARK: - UITableViewDataSource
 
 extension PokemonListAdapter: UITableViewDataSource {
-    #warning("change to number from enum")
+#warning("change to number from enum")
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(PokemonListTableCell.self)",
+                                                 for: indexPath) as? PokemonListTableCell
+        cell?.setup()
+        return cell ?? UITableViewCell()
     }
     
     

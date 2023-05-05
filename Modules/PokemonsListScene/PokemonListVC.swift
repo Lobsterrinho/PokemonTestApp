@@ -25,11 +25,13 @@ final class PokemonListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupViewsAndConstraints()
+        setupViewsAndConstraints()
+        viewModel.setupAdapter(with: tableView)
     }
     
     private func setupViewsAndConstraints() {
-        view.backgroundColor = .cyan
+        
+        view.backgroundColor = .mainWhite
         
         setupTableView()
         setupTableViewConstraints()
@@ -37,7 +39,8 @@ final class PokemonListVC: UIViewController {
     
     private func setupTableView() {
         let tableView = UITableView(frame: .zero,
-                                style: .insetGrouped)
+                                    style: .insetGrouped)
+        tableView.backgroundColor = .mainWhite
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         self.tableView = tableView
@@ -45,10 +48,10 @@ final class PokemonListVC: UIViewController {
     
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

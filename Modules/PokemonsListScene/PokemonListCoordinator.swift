@@ -36,4 +36,20 @@ final class PokemonListCoordinator: Coordinator {
 
 extension PokemonListCoordinator: PokemonListCoordinatorProtocol {
     
+    func openPokemonDetailsScene(pokemon: PokemonResult) {
+        let pokemonDetailsCoordinator = PokemonDetailsCoordinator(
+            rootNavigationController: rootNavigationController,
+            rootCoordinator: self
+        )
+        childCoordinators.append(pokemonDetailsCoordinator)
+        pokemonDetailsCoordinator.start(pokemon: pokemon)
+    }
+    
+}
+
+extension PokemonListCoordinator: PokemonDetailsRootCoordinatorProtocol {
+    
+    func pokemonDetailsSceneDidFinished(_ coordinator: Coordinator) {
+        childCoordinators.removeAll(where: { $0 === coordinator })
+    }
 }

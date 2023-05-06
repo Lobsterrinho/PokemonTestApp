@@ -51,6 +51,6 @@ final class PokemonListVM: PokemonListVMProtocol {
 extension PokemonListVM: PokemonListAdapterActionDelegate {
     
     func didSelectItem(pokemon: PokemonResult) {
-        print(pokemon)
+        coordinator?.openPokemonDetailsScene(pokemon: pokemon)
     }
 }

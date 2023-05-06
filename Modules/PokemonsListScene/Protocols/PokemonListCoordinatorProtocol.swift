@@ -11,4 +11,5 @@ import UIKit
 protocol PokemonListCoordinatorProtocol: AnyObject {
     
     func finish()
+    func openPokemonDetailsScene(pokemon: PokemonResult)
 }

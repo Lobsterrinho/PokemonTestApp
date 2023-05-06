@@ -5,6 +5,7 @@
 //  Created by Lobster on 6.05.23.
 //
 
+import Foundation
 import UIKit
 
 final class PokemonDetailsAssembler {
@@ -25,6 +26,11 @@ final class PokemonDetailsAssembler {
         pokemon: PokemonResult
     ) -> PokemonDetailsVMProtocol {
         return PokemonDetailsVM(coordinator: coordinator,
+                                networkService: makeNetworkService(),
                                 pokemon: pokemon)
+    }
+    
+    private static func makeNetworkService() -> NetworkServiceProtocol {
+        return NetworkService()
     }
 }

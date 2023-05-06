@@ -9,5 +9,7 @@ import Foundation
 
 protocol PokemonDetailsVMProtocol {
     
+    var pokemon: PokemonResult { get }
+    func loadPokemonDetails( completion: @escaping (PokemonDetailsModel) -> Void)
     func finish(shouldMovetoParentVC: Bool)
 }

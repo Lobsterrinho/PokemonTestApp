@@ -11,4 +11,5 @@ protocol PokemonListVMProtocol {
     
     func loadPokemons()
     func setupAdapter(with tableView: UITableView)
+    func setupViewModelDelegate(_ delegate: ViewModelDelegate)
 }

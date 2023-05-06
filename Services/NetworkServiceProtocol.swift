@@ -9,5 +9,6 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     
-    func getPockemonsList(completion: @escaping ResultHandler)
+    func getPockemonsList(completion: @escaping ListResultHandler)
+    func getPokemonDetails(url: String, completion: @escaping DetailsResultHandler)
 }

@@ -11,6 +11,7 @@ import UIKit
 final class PokemonListVC: UIViewController {
     
     private weak var tableView: UITableView!
+    private weak var activityIndicator: UIActivityIndicatorView!
     
     private var viewModel: PokemonListVMProtocol
     
@@ -28,7 +29,19 @@ final class PokemonListVC: UIViewController {
         title = "Pokemons"
         viewModel.loadPokemons()
         setupViewsAndConstraints()
+        startIndicatorAnimation()
         viewModel.setupAdapter(with: tableView)
+        viewModel.setupViewModelDelegate(self)
+    }
+    
+    private func startIndicatorAnimation() {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+    }
+    
+    private func stopIndicatorAnimation() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
     
     private func setupViewsAndConstraints() {
@@ -37,6 +50,9 @@ final class PokemonListVC: UIViewController {
         
         setupTableView()
         setupTableViewConstraints()
+        
+        setupActivityIndicator()
+        setupActivityIndicatorConstraints()
     }
     
     private func setupTableView() {
@@ -48,6 +64,14 @@ final class PokemonListVC: UIViewController {
         self.tableView = tableView
     }
     
+    private func setupActivityIndicator() {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        view.bringSubviewToFront(activityIndicator)
+        self.activityIndicator = activityIndicator
+    }
+    
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -57,4 +81,18 @@ final class PokemonListVC: UIViewController {
         ])
     }
     
+    private func setupActivityIndicatorConstraints() {
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+}
+
+extension PokemonListVC: ViewModelDelegate {
+    
+    func cellsDidLoaded() {
+        stopIndicatorAnimation()
+    }
 }

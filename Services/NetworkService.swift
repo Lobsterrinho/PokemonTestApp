@@ -8,12 +8,14 @@
 import UIKit
 import Foundation
 
-typealias ResultHandler = (Result<PokemonListModel, Error>) -> Void
+typealias ListResultHandler = (Result<PokemonListModel, Error>) -> Void
+typealias DetailsResultHandler = (Result<PokemonDetailsModel, Error>) -> Void
+
 
 final class NetworkService: NetworkServiceProtocol {
     
-    func getPockemonsList(completion: @escaping ResultHandler) {
-         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
+    func getPockemonsList(completion: @escaping ListResultHandler) {
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
         else { return }
         var request = URLRequest(url: url)
         request.timeoutInterval = 20.0
@@ -29,5 +31,28 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }.resume()
     }
+    
+    func getPokemonDetails(url: String, completion: @escaping DetailsResultHandler) {
+        guard let url = URL(string: url)
+        else { return }
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 20.0
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared
+        task.dataTask(with: request) { responseData, response, error in
+            guard let jsonData = responseData, error == nil else { return }
+            do {
+                let pokemon = try JSONDecoder().decode(PokemonDetailsModel.self, from: jsonData)
+                print(pokemon.name)
+                completion(.success(pokemon))
+            }
+            catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    
     
 }

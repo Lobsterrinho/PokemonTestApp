@@ -13,27 +13,36 @@ final class PokemonDetailsVM: PokemonDetailsVMProtocol {
     private weak var coordinator: PokemonDetailsCoordinatorProtocol?
     #warning("make another protocol")
     private var networkService: NetworkServiceProtocol
+    private var adapter: PokemonDetailsAdapterProtocol
     
     var pokemon: PokemonResult
     
     init(coordinator: PokemonDetailsCoordinatorProtocol,
          networkService: NetworkServiceProtocol,
+         adapter: PokemonDetailsAdapterProtocol,
          pokemon: PokemonResult) {
         self.coordinator = coordinator
         self.networkService = networkService
+        self.adapter = adapter
         self.pokemon = pokemon
     }
     
-    func loadPokemonDetails(
-        completion: @escaping (PokemonDetailsModel
-        ) -> Void) {
+    func setupAdapter(with tableView: UITableView) {
+        adapter.setupTableView(tableView)
+    }
+    
+    private func setupPokemon(_ pokemon: PokemonDetailsModel) {
+        adapter.setupPokemon(pokemon)
+    }
+    
+    func loadPokemonDetails() {
         networkService.getPokemonDetails(url: pokemon.url) { result in
             switch result {
             case .failure(let error):
                 print(error)
             case.success(let pokemonModel):
                 DispatchQueue.main.async {
-                    completion(pokemonModel)
+                    self.setupPokemon(pokemonModel)
                 }
             }
         }

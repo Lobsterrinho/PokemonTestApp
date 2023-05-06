@@ -35,6 +35,7 @@ final class AppCoordinator: Coordinator {
             rootCoordinator: self
         )
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = .black
         childCoordinators.append(pokemonListCoordinator)
         pokemonListCoordinator.start()
         window = listWindow

@@ -24,7 +24,10 @@ final class PokemonDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupViewsAndConstraints()
+        
+        setupViewsAndConstraints()
+        viewModel.setupAdapter(with: tableView)
+        viewModel.loadPokemonDetails()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -39,12 +42,6 @@ final class PokemonDetailsVC: UIViewController {
         
         setupTableView()
         setupTableViewConstraints()
-    }
-    
-    private func setupItemsFromModel() {
-        viewModel.loadPokemonDetails { pokemonModel in
-            
-        }
     }
     
     private func setupTableView() {

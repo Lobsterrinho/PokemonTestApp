@@ -8,7 +8,6 @@
 import Foundation
 
 struct PokemonDetailsModel: Decodable {
-    let name: String
     let sprites: Sprites
     let types: [Types]
     let weight: Int

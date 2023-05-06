@@ -44,7 +44,6 @@ final class NetworkService: NetworkServiceProtocol {
             guard let jsonData = responseData, error == nil else { return }
             do {
                 let pokemon = try JSONDecoder().decode(PokemonDetailsModel.self, from: jsonData)
-                print(pokemon.name)
                 completion(.success(pokemon))
             }
             catch {

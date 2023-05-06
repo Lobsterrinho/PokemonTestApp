@@ -27,10 +27,16 @@ final class PokemonDetailsAssembler {
     ) -> PokemonDetailsVMProtocol {
         return PokemonDetailsVM(coordinator: coordinator,
                                 networkService: makeNetworkService(),
+                                adapter: makeAdapter(),
                                 pokemon: pokemon)
     }
     
     private static func makeNetworkService() -> NetworkServiceProtocol {
         return NetworkService()
     }
+    
+    private static func makeAdapter() -> PokemonDetailsAdapterProtocol {
+        return PokemonDetailsAdapter()
+    }
+    
 }

@@ -25,6 +25,7 @@ final class PokemonListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Pokemons"
         viewModel.loadPokemons()
         setupViewsAndConstraints()
         viewModel.setupAdapter(with: tableView)

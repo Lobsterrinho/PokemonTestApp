@@ -10,4 +10,6 @@ import UIKit
 protocol PokemonListAdapterProtocol {
     
     func setupTableView(_ tableView: UITableView)
+    func setupPokemons(_ pokemons: [PokemonResult])
+    func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate)
 }

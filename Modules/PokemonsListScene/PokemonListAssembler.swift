@@ -23,11 +23,16 @@ final class PokemonListAssembler {
         coordinator: PokemonListCoordinatorProtocol
     ) -> PokemonListVMProtocol {
         return PokemonListVM(coordinator: coordinator,
-                             adapter: makeAdapter())
+                             adapter: makeAdapter(),
+                             networkService: makeNetworkService())
     }
     
     private static func makeAdapter() -> PokemonListAdapterProtocol {
         return PokemonListAdapter()
+    }
+    
+    private static func makeNetworkService() -> NetworkServiceProtocol {
+        return NetworkService()
     }
     
 }

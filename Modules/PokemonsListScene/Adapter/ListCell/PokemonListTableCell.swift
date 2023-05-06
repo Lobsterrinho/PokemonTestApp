@@ -21,9 +21,9 @@ final class PokemonListTableCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    #warning("delete debagger")
-    func setup() {
-        print("\(#function.self)")
+    
+    func setup(pokemonName: String) {
+        titleLabel.text = pokemonName.capitalized
     }
     
     private func setupViewsAndConstraints() {

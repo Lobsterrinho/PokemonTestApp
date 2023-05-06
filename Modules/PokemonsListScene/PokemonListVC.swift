@@ -25,6 +25,7 @@ final class PokemonListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.loadPokemons()
         setupViewsAndConstraints()
         viewModel.setupAdapter(with: tableView)
     }

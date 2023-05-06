@@ -10,7 +10,10 @@ import UIKit
 
 final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     
-    private var tableView: UITableView?
+    private weak var tableView: UITableView?
+    private var pokemons: [PokemonResult] = []
+    
+    private weak var delegate: PokemonListAdapterActionDelegate?
     
     func setupTableView(_ tableView: UITableView) {
         self.tableView = tableView
@@ -24,6 +27,11 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
         tableView?.rowHeight = 50.0
     }
     
+    func setupPokemons(_ pokemons: [PokemonResult]) {
+        self.pokemons = pokemons
+        reloadData()
+    }
+    
     private func reloadData() {
         tableView?.reloadData()
     }
@@ -33,28 +41,36 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
                             forCellReuseIdentifier: "\(PokemonListTableCell.self)")
     }
     
+    func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate) {
+        self.delegate = delegate
+    }
+    
 }
 
 //MARK: - UITableViewDataSource
 
 extension PokemonListAdapter: UITableViewDataSource {
-#warning("change to number from enum")
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return pokemons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(PokemonListTableCell.self)",
                                                  for: indexPath) as? PokemonListTableCell
-        cell?.setup()
+        let pokemon = pokemons[indexPath.row]
+        cell?.setup(pokemonName: pokemon.name)
         return cell ?? UITableViewCell()
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate
 
 extension PokemonListAdapter: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let pokemon = pokemons[indexPath.row]
+        delegate?.didSelectItem(pokemon: pokemon)
+    }
 }

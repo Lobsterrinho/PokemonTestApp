@@ -14,6 +14,7 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     private var pokemons: [PokemonResult] = []
     
     private weak var delegate: PokemonListAdapterActionDelegate?
+    private weak var lastCellDelegate: PokemonListLastCellDelegate?
     
     func setupTableView(_ tableView: UITableView) {
         self.tableView = tableView
@@ -39,10 +40,17 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     private func registerCells() {
         tableView?.register(PokemonListTableCell.self,
                             forCellReuseIdentifier: "\(PokemonListTableCell.self)")
+        
+        tableView?.register(LoaderTableCellPrototype.self,
+                            forCellReuseIdentifier: "\(LoaderTableCellPrototype.self)")
     }
     
     func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate) {
         self.delegate = delegate
+    }
+    
+    func setupPokemonListLastCellDelegate(_ delegate: PokemonListLastCellDelegate) {
+        self.lastCellDelegate = delegate
     }
     
 }
@@ -50,17 +58,31 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
 //MARK: - UITableViewDataSource
 
 extension PokemonListAdapter: UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemons.count
+        return pokemons.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(PokemonListTableCell.self)",
-                                                 for: indexPath) as? PokemonListTableCell
-        let pokemon = pokemons[indexPath.row]
-        cell?.setup(pokemonName: pokemon.name)
-        return cell ?? UITableViewCell()
+        let pokemonCell = tableView.dequeueReusableCell(
+            withIdentifier: "\(PokemonListTableCell.self)",
+            for: indexPath
+        ) as? PokemonListTableCell
+        
+        let loaderCell = tableView.dequeueReusableCell(
+            withIdentifier: "\(LoaderTableCellPrototype.self)",
+            for: indexPath
+        ) as? LoaderTableCellPrototype
+        
+        switch indexPath.row {
+        case pokemons.count:
+            return loaderCell ?? UITableViewCell()
+        default:
+            let pokemon = pokemons[indexPath.row]
+            pokemonCell?.setup(pokemonName: pokemon.name)
+            return pokemonCell ?? UITableViewCell()
+        }
+
     }
 }
 
@@ -72,5 +94,12 @@ extension PokemonListAdapter: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let pokemon = pokemons[indexPath.row]
         delegate?.didSelectItem(pokemon: pokemon)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastIndex = pokemons.count - 1
+        if indexPath.row == lastIndex {
+            lastCellDelegate?.didScrolledToLastCell()
+        }
     }
 }

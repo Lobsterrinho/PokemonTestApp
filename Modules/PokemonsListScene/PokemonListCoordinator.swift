@@ -36,6 +36,10 @@ final class PokemonListCoordinator: Coordinator {
 
 extension PokemonListCoordinator: PokemonListCoordinatorProtocol {
     
+    func presentAlert(_ alert: UIAlertController) {
+        rootNavigationController.present(alert, animated: true)
+    }
+    
     func openPokemonDetailsScene(pokemon: PokemonResult) {
         let pokemonDetailsCoordinator = PokemonDetailsCoordinator(
             rootNavigationController: rootNavigationController,

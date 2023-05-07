@@ -24,7 +24,8 @@ final class PokemonListAssembler {
     ) -> PokemonListVMProtocol {
         return PokemonListVM(coordinator: coordinator,
                              adapter: makeAdapter(),
-                             networkService: makeNetworkService())
+                             networkService: makeNetworkService(),
+                             alertFactory: makeAlertFactory())
     }
     
     private static func makeAdapter() -> PokemonListAdapterProtocol {
@@ -33,6 +34,10 @@ final class PokemonListAssembler {
     
     private static func makeNetworkService() -> NetworkServiceProtocol {
         return NetworkService()
+    }
+    
+    private static func makeAlertFactory() -> AlertControllerFactoryProtocol {
+        return AlertControllerFactory()
     }
     
 }

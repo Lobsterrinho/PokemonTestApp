@@ -24,6 +24,9 @@ final class PokemonImageTableCellVM: PokemonImageTableCellVMProtocol {
             switch result {
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    handler(UIImage(named: "noImage"))
+                }
             case .success(let image):
                 DispatchQueue.main.async {
                     handler(image)

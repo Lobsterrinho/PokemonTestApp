@@ -12,4 +12,5 @@ protocol PokemonListCoordinatorProtocol: AnyObject {
     
     func finish()
     func openPokemonDetailsScene(pokemon: PokemonResult)
+    func presentAlert(_ alert: UIAlertController)
 }

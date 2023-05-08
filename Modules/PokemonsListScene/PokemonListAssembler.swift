@@ -33,7 +33,7 @@ final class PokemonListAssembler {
     }
     
     private static func makeNetworkService() -> NetworkServiceProtocol {
-        return NetworkService()
+        return NetworkService(networkSession: URLSession.shared)
     }
     
     private static func makeAlertFactory() -> AlertControllerFactoryProtocol {

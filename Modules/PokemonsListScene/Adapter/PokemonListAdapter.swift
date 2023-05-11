@@ -12,6 +12,7 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     
     private weak var tableView: UITableView?
     private var pokemons: [PokemonResult] = []
+    private var isInternetAvailable: Bool = false
     
     private weak var delegate: PokemonListAdapterActionDelegate?
     private weak var lastCellDelegate: PokemonListLastCellDelegate?
@@ -23,6 +24,9 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     
     private func setupTableView() {
         registerCells()
+        if !isInternetAvailable {
+            tableView?.allowsSelection = false
+        }
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.rowHeight = 50.0
@@ -31,6 +35,10 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     func setupPokemons(_ pokemons: [PokemonResult]) {
         self.pokemons = pokemons
         reloadData()
+    }
+    
+    func isInternetAvailable(_ available: Bool) {
+        self.isInternetAvailable = available
     }
     
     private func reloadData() {
@@ -43,6 +51,9 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
         
         tableView?.register(LoaderTableCellPrototype.self,
                             forCellReuseIdentifier: "\(LoaderTableCellPrototype.self)")
+        
+        tableView?.register(UITableViewCell.self,
+                            forCellReuseIdentifier: "Cell")
     }
     
     func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate) {
@@ -74,9 +85,18 @@ extension PokemonListAdapter: UITableViewDataSource {
             for: indexPath
         ) as? LoaderTableCellPrototype
         
+        let standartCell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+                                                         for: indexPath)
+        
         switch indexPath.row {
         case pokemons.count:
-            return loaderCell ?? UITableViewCell()
+            if isInternetAvailable {
+                return loaderCell ?? UITableViewCell()
+            } else {
+                standartCell.backgroundColor = .clear
+                standartCell.contentView.backgroundColor = .clear
+                return standartCell
+            }
         default:
             let pokemon = pokemons[indexPath.row]
             pokemonCell?.setup(pokemonName: pokemon.name)
@@ -96,9 +116,11 @@ extension PokemonListAdapter: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastIndex = pokemons.count - 1
-        if indexPath.row == lastIndex {
-            lastCellDelegate?.didScrolledToLastCell()
+        if isInternetAvailable {
+            let lastIndex = pokemons.count - 1
+            if indexPath.row == lastIndex {
+                lastCellDelegate?.didScrolledToLastCell()
+            }
         }
     }
 }

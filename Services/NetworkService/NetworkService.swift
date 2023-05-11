@@ -14,6 +14,8 @@ typealias DetailsResultHandler = (Result<PokemonDetailsModel, Error>) -> Void
 
 final class NetworkService: NetworkServiceProtocol {
     
+    private let coreDataManager = PokemonCoreDataManager()
+    
     private var networkSession: NetworkSessionProtocol
     
     private let internetConnectionMonitor: InternetConnectionMonitorServiceProtocol
@@ -49,6 +51,9 @@ final class NetworkService: NetworkServiceProtocol {
                                 let pokemons = try JSONDecoder().decode(PokemonListModel.self,
                                                                         from: jsonData)
                                 completion(.success(pokemons))
+                                    self.coreDataManager.savePokemonList(
+                                        pokemonListModel: pokemons
+                                    )
                                 self.currentPage += 1
                             } else {
                                 throw FetchError.noResponce

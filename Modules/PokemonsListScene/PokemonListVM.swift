@@ -15,6 +15,7 @@ final class PokemonListVM: PokemonListVMProtocol {
     private var networkService: NetworkServiceProtocol
     private var alertFactory: AlertControllerFactoryProtocol
     private weak var delegate: ViewModelDelegate?
+    private var coreDataManager = PokemonCoreDataManager()
     private var pokemons: [PokemonResult] = []
     
     init(coordinator: PokemonListCoordinatorProtocol,
@@ -33,13 +34,16 @@ final class PokemonListVM: PokemonListVMProtocol {
         self.delegate = delegate
     }
     
-    
     func setupAdapter(with tableView: UITableView) {
         adapter.setupTableView(tableView)
     }
     
     func setupPokemons() {
         adapter.setupPokemons(pokemons)
+    }
+    
+    func isInternetAvailable(_ available: Bool) {
+        adapter.isInternetAvailable(available)
     }
     
     func loadPokemons() {
@@ -54,6 +58,7 @@ final class PokemonListVM: PokemonListVMProtocol {
                     self.pokemons.append(
                         contentsOf: PokemonMapper.map(pokemonsListModel)
                     )
+                    self.isInternetAvailable(true)
                     self.setupPokemons()
                     self.delegate?.cellsDidLoaded()
                 }
@@ -66,12 +71,20 @@ final class PokemonListVM: PokemonListVMProtocol {
             title: "Error",
             message: message,
             actions: [
-                .cancel({ }),
+                .cancel({
+                    self.coreDataManager.getPokemonList { results in
+                        DispatchQueue.main.async {
+                            self.pokemons = results
+                            self.isInternetAvailable(false)
+                            self.setupPokemons()
+                            self.delegate?.cellsDidLoaded()
+                        }
+                    }
+                }),
             ]
         )
         coordinator?.presentAlert(alert)
     }
-    
 }
 
 extension PokemonListVM: PokemonListAdapterActionDelegate {

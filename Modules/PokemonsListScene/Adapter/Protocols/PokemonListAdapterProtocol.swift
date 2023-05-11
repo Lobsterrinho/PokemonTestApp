@@ -11,6 +11,7 @@ protocol PokemonListAdapterProtocol {
     
     func setupTableView(_ tableView: UITableView)
     func setupPokemons(_ pokemons: [PokemonResult])
+    func isInternetAvailable(_ available: Bool)
     func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate)
     func setupPokemonListLastCellDelegate(_ delegate: PokemonListLastCellDelegate)
 }

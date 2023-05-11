@@ -9,11 +9,16 @@ import CoreData
 
 final class PokemonsCoreDataService {
     
-    static var context: NSManagedObjectContext {
+    private init() { }
+    
+    public static let shared = PokemonsCoreDataService()
+    
+    
+    public var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
 
-    static private var persistentContainer: NSPersistentContainer = {
+    public lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PokemonTestApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -23,7 +28,7 @@ final class PokemonsCoreDataService {
         return container
     }()
     
-    static func saveContext () {
+    public func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

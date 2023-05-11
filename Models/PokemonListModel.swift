@@ -9,11 +9,5 @@ import Foundation
 
 struct PokemonListModel: Codable {
     let results: [PokemonResult]
-    
-}
-
-struct PokemonResult: Codable {
-    let name: String
-    let url: String
 }
 

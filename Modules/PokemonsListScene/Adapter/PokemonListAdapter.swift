@@ -82,7 +82,6 @@ extension PokemonListAdapter: UITableViewDataSource {
             pokemonCell?.setup(pokemonName: pokemon.name)
             return pokemonCell ?? UITableViewCell()
         }
-
     }
 }
 

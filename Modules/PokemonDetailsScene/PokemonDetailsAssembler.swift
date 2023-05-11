@@ -32,11 +32,17 @@ final class PokemonDetailsAssembler {
     }
     
     private static func makeNetworkService() -> NetworkServiceProtocol {
-        return NetworkService(networkSession: URLSession.shared)
+        return NetworkService(networkSession: URLSession.shared, internetConnectionMonitor: makeInternetConnectionMonitor())
     }
     
     private static func makeAdapter() -> PokemonDetailsAdapterProtocol {
         return PokemonDetailsAdapter()
     }
+    
+    private static func makeInternetConnectionMonitor(
+    ) -> InternetConnectionMonitorServiceProtocol {
+        return InternetConnectionMonitorServiceAssembler.makeInternetConnectionMonitorService()
+    }
+    
     
 }

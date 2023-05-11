@@ -47,7 +47,7 @@ final class PokemonListVM: PokemonListVMProtocol {
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlert(message: error.localizedDescription)
+                    self.showAlert(message: "\(error.localizedDescription)")
                 }
             case .success(let pokemonsListModel):
                 DispatchQueue.main.async {
@@ -55,7 +55,7 @@ final class PokemonListVM: PokemonListVMProtocol {
                         contentsOf: PokemonMapper.map(pokemonsListModel)
                     )
                     self.setupPokemons()
-                    self.delegate?.cellsDidLoaded()  
+                    self.delegate?.cellsDidLoaded()
                 }
             }
         }
@@ -65,7 +65,9 @@ final class PokemonListVM: PokemonListVMProtocol {
         let alert = alertFactory.makeAlert(
             title: "Error",
             message: message,
-            actions: [.cancel({ })]
+            actions: [
+                .cancel({ }),
+            ]
         )
         coordinator?.presentAlert(alert)
     }

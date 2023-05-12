@@ -41,7 +41,7 @@ final class NetworkService {
             if isConnected {
                 NetworkService.createRequest(
                     with: url,
-                    type: .get
+                    type: .GET
                 ) { request in
                     self.networkSession.callDataTask(
                         with: request
@@ -84,7 +84,7 @@ final class NetworkService {
         internetConnectionMonitor.checkInternetConnection { isConnected in
             if isConnected {
                 NetworkService.createRequest(with: url,
-                                   type: .get) { request in
+                                   type: .GET) { request in
                     self.networkSession.callDataTask(
                         with: request
                     )

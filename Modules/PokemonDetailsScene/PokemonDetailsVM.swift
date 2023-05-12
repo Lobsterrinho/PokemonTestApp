@@ -11,14 +11,13 @@ import UIKit
 final class PokemonDetailsVM: PokemonDetailsVMProtocol {
     
     private weak var coordinator: PokemonDetailsCoordinatorProtocol?
-    #warning("make another protocol")
-    private var networkService: NetworkServiceProtocol
+    private var networkService: DetailsNetworkServiceProtocol
     private var adapter: PokemonDetailsAdapterProtocol
     
     var pokemon: PokemonResult
     
     init(coordinator: PokemonDetailsCoordinatorProtocol,
-         networkService: NetworkServiceProtocol,
+         networkService: DetailsNetworkServiceProtocol,
          adapter: PokemonDetailsAdapterProtocol,
          pokemon: PokemonResult) {
         self.coordinator = coordinator

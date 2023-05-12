@@ -12,18 +12,20 @@ typealias ListResultHandler = (Result<PokemonListModel, Error>) -> Void
 typealias DetailsResultHandler = (Result<PokemonDetailsModel, Error>) -> Void
 
 
-final class NetworkService: NetworkServiceProtocol {
+final class NetworkService {
     
-    private let coreDataManager = PokemonCoreDataManager()
+    private let coreDataManager: SavePokemonCoreDataManagerProtocol
     
     private var networkSession: NetworkSessionProtocol
     
     private let internetConnectionMonitor: InternetConnectionMonitorServiceProtocol
     
     init(networkSession: NetworkSessionProtocol,
-         internetConnectionMonitor: InternetConnectionMonitorServiceProtocol) {
+         internetConnectionMonitor: InternetConnectionMonitorServiceProtocol,
+         coreDataManager: SavePokemonCoreDataManagerProtocol) {
         self.networkSession = networkSession
         self.internetConnectionMonitor = internetConnectionMonitor
+        self.coreDataManager = coreDataManager
     }
     
     private var currentPage = 0
@@ -37,7 +39,7 @@ final class NetworkService: NetworkServiceProtocol {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=\(itemsPerPage)&offset=\(offset)")
         internetConnectionMonitor.checkInternetConnection { isConnected in
             if isConnected {
-                self.createRequest(
+                NetworkService.createRequest(
                     with: url,
                     type: .get
                 ) { request in
@@ -51,9 +53,9 @@ final class NetworkService: NetworkServiceProtocol {
                                 let pokemons = try JSONDecoder().decode(PokemonListModel.self,
                                                                         from: jsonData)
                                 completion(.success(pokemons))
-                                    self.coreDataManager.savePokemonList(
-                                        pokemonListModel: pokemons
-                                    )
+                                self.coreDataManager.savePokemonList(
+                                    pokemonListModel: pokemons
+                                )
                                 self.currentPage += 1
                             } else {
                                 throw FetchError.noResponce
@@ -81,7 +83,7 @@ final class NetworkService: NetworkServiceProtocol {
         
         internetConnectionMonitor.checkInternetConnection { isConnected in
             if isConnected {
-                self.createRequest(with: url,
+                NetworkService.createRequest(with: url,
                                    type: .get) { request in
                     self.networkSession.callDataTask(
                         with: request
@@ -108,16 +110,4 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-}
-
-extension NetworkService {
-    
-    private func createRequest(with url: URL?, type: HTTPMethod, completion: @escaping (URLRequest) -> Void) {
-        guard let apiURL = url else { return }
-        var request = URLRequest(url: apiURL)
-        request.httpMethod = type.rawValue
-        request.timeoutInterval = 20
-        completion(request)
-    }
-    
 }

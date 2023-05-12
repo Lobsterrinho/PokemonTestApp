@@ -17,7 +17,7 @@ final class PokemonsCoreDataService {
     public var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-
+    
     public lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PokemonTestApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

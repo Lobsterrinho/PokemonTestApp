@@ -59,12 +59,11 @@ final class PokemonListTableCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImage.widthAnchor.constraint(equalToConstant: 30.0),
             iconImage.topAnchor.constraint(equalTo: self.topAnchor,
-                                            constant: 10.0),
+                                           constant: 10.0),
             iconImage.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                constant: 20.0),
-            
+                                               constant: 20.0),
             iconImage.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                               constant: -10.0)
+                                              constant: -10.0)
         ])
     }
     

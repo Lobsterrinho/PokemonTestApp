@@ -25,16 +25,17 @@ final class PokemonListAssembler {
         return PokemonListVM(coordinator: coordinator,
                              adapter: makeAdapter(),
                              networkService: makeNetworkService(),
-                             alertFactory: makeAlertFactory())
+                             alertFactory: makeAlertFactory(),
+                             coreDataManager: makeGetCoreData())
     }
     
     private static func makeAdapter() -> PokemonListAdapterProtocol {
         return PokemonListAdapter()
     }
     
-    private static func makeNetworkService() -> NetworkServiceProtocol {
+    private static func makeNetworkService() -> PokemonListNetworkServiceProtocol {
         return NetworkService(networkSession: URLSession.shared,
-                              internetConnectionMonitor: makeInternetConnectionMonitor())
+                              internetConnectionMonitor: makeInternetConnectionMonitor(), coreDataManager: makeCoreDataManager())
     }
     
     private static func makeAlertFactory() -> AlertControllerFactoryProtocol {
@@ -44,6 +45,14 @@ final class PokemonListAssembler {
     private static func makeInternetConnectionMonitor(
     ) -> InternetConnectionMonitorServiceProtocol {
         return InternetConnectionMonitorServiceAssembler.makeInternetConnectionMonitorService()
+    }
+    
+    private static func makeCoreDataManager() -> SavePokemonCoreDataManagerProtocol {
+        return PokemonCoreDataManager()
+    }
+    
+    private static func makeGetCoreData() -> GetPokemonCoreDataManagerProtocol {
+        return PokemonCoreDataManager()
     }
     
 }

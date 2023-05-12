@@ -54,5 +54,4 @@ final class PokemonDetailsTableCell: UITableViewCell {
                                                constant: -10.0)
         ])
     }
-    
 }

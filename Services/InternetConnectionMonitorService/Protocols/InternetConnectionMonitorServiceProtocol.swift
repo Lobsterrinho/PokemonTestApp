@@ -9,6 +9,5 @@ import Foundation
 
 protocol InternetConnectionMonitorServiceProtocol {
     
-//    func checkForInternetConnection() -> Bool
     func checkInternetConnection(completion: @escaping (Bool) -> Void)
 }

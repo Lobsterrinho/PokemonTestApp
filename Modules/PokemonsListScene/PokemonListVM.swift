@@ -12,20 +12,22 @@ final class PokemonListVM: PokemonListVMProtocol {
     
     private weak var coordinator: PokemonListCoordinatorProtocol?
     private var adapter: PokemonListAdapterProtocol
-    private var networkService: NetworkServiceProtocol
+    private var networkService: PokemonListNetworkServiceProtocol
     private var alertFactory: AlertControllerFactoryProtocol
     private weak var delegate: ViewModelDelegate?
-    private var coreDataManager = PokemonCoreDataManager()
+    private var coreDataManager: GetPokemonCoreDataManagerProtocol
     private var pokemons: [PokemonResult] = []
     
     init(coordinator: PokemonListCoordinatorProtocol,
          adapter: PokemonListAdapterProtocol,
-         networkService: NetworkServiceProtocol,
-         alertFactory: AlertControllerFactoryProtocol) {
+         networkService: PokemonListNetworkServiceProtocol,
+         alertFactory: AlertControllerFactoryProtocol,
+         coreDataManager: GetPokemonCoreDataManagerProtocol) {
         self.coordinator = coordinator
         self.adapter = adapter
         self.networkService = networkService
         self.alertFactory = alertFactory
+        self.coreDataManager = coreDataManager
         adapter.setupAdapterActionDelegate(self)
         adapter.setupPokemonListLastCellDelegate(self)
     }
@@ -51,7 +53,10 @@ final class PokemonListVM: PokemonListVMProtocol {
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlert(message: "\(error.localizedDescription)")
+                    self.showAlert(message: """
+                                   \(error.localizedDescription)
+                                   The app will work in offline mode
+                                """)
                 }
             case .success(let pokemonsListModel):
                 DispatchQueue.main.async {

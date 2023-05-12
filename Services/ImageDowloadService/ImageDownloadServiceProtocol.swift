@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ImageDownloadServiceProtocol {
+    
     func downloadImage(from urlStr: String,
                        completion: @escaping DownloadHandler)
     func cancelCurrentDownload()

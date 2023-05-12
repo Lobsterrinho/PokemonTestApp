@@ -7,8 +7,6 @@
 
 import CoreData
 
-typealias CoreDataResultHandler = (Result<PokemonResult, Error>) -> Void
-
 final class PokemonCoreDataManager {
     
     private let coreDataService = PokemonsCoreDataService.shared

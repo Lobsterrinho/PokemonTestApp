@@ -17,9 +17,9 @@ extension FetchError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noResponce:
-            return "Unable to get pokemons. The app will work in offline mode"
+            return "Unable to get pokemons."
         case .noInternet:
-            return "No internet connection. The app will work in offline mode"
+            return "No internet connection."
         case .badURL:
             return "Chech for URL correct"
         }

@@ -8,5 +8,6 @@
 import Foundation
 
 protocol PokemonListLastCellDelegate: AnyObject {
+    
     func didScrolledToLastCell()
 }

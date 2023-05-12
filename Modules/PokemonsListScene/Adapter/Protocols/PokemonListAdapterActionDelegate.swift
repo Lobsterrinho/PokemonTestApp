@@ -8,5 +8,6 @@
 import Foundation
 
 protocol PokemonListAdapterActionDelegate: AnyObject {
+    
     func didSelectItem(pokemon: PokemonResult)
 }

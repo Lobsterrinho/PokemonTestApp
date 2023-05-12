@@ -49,7 +49,6 @@ final class ImageDownloadService: ImageDownloadServiceProtocol {
                 self?.cache.set(value: image, for: urlStr)
                 completion(.success(image))
             }
-            
         }
         currentTask?.resume()
     }

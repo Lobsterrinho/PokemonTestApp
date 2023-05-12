@@ -24,7 +24,7 @@ final class PokemonDetailsAdapter: NSObject, PokemonDetailsAdapterProtocol {
         registerCells()
         tableView?.allowsSelection = false
         tableView?.dataSource = self
-//        tableView?.rowHeight = 50.0
+        //        tableView?.rowHeight = 50.0
     }
     
     func setupPokemon(_ pokemon: PokemonDetailsModel) {

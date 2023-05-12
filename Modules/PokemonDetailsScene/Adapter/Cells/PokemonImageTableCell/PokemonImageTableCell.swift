@@ -78,10 +78,10 @@ final class PokemonImageTableCell: UITableViewCell {
             pokemonImage.widthAnchor.constraint(equalToConstant: heightAndWidth),
             pokemonImage.heightAnchor.constraint(equalToConstant: heightAndWidth),
             pokemonImage.topAnchor.constraint(equalTo: self.topAnchor,
-                                            constant: 10.0),
+                                              constant: 10.0),
             pokemonImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             pokemonImage.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                               constant: -10.0)
+                                                 constant: -10.0)
         ])
     }
     
@@ -92,6 +92,5 @@ final class PokemonImageTableCell: UITableViewCell {
             
         ])
     }
-    
 }
 

@@ -15,9 +15,7 @@ final class PokemonImageTableCellVMAssembler {
         return PokemonImageTableCellVM(imageDownloadService: makeDownloadService())
     }
     
-    #warning("fix protocol name")
     private static func makeDownloadService() -> ImageDownloadServiceProtocol {
         return ImageDownloadServiceAssembler.makeImageDownloadService()
     }
-    
 }

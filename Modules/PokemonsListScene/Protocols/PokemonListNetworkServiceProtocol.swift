@@ -1,5 +1,5 @@
 //
-//  NetworkServiceProtocol.swift
+//  PokemonListNetworkServiceProtocol.swift
 //  PokemonTestApp
 //
 //  Created by Lobster on 5.05.23.
@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol NetworkServiceProtocol {
+protocol PokemonListNetworkServiceProtocol {
     
     func getPockemonsList(completion: @escaping ListResultHandler)
-    func getPokemonDetails(url: String, completion: @escaping DetailsResultHandler)
 }

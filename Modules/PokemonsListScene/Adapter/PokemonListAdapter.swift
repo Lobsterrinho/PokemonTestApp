@@ -25,7 +25,7 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     private func setupTableView() {
         registerCells()
         if !isInternetAvailable {
-            tableView?.allowsSelection = false
+            tableView?.allowsSelection = true
         }
         tableView?.delegate = self
         tableView?.dataSource = self

@@ -9,7 +9,11 @@ import UIKit
 
 final class LoaderTableCellPrototype: UITableViewCell {
     
-    private weak var activityIndicator: UIActivityIndicatorView!
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,18 +36,13 @@ final class LoaderTableCellPrototype: UITableViewCell {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         
-        setupActivityIndicator()
-        setupActivityIndicatorConstraints()
-    }
-    
-    private func setupActivityIndicator() {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)
-        self.activityIndicator = activityIndicator
+        
+        setupConstraints()
     }
+
     
-    private func setupActivityIndicatorConstraints() {
+    private func setupConstraints() {
         let widthOrHeight = self.frame.height - 20
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),

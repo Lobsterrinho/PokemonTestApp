@@ -9,7 +9,13 @@ import UIKit
 
 final class PokemonDetailsVC: UIViewController {
     
-    private weak var tableView: UITableView!
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero,
+                                    style: .insetGrouped)
+        tableView.backgroundColor = .mainWhite
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     private var viewModel: PokemonDetailsVMProtocol
     
@@ -40,20 +46,11 @@ final class PokemonDetailsVC: UIViewController {
         title = viewModel.pokemon.name.capitalized
         view.backgroundColor = .mainWhite
         
-        setupTableView()
-        setupTableViewConstraints()
-    }
-    
-    private func setupTableView() {
-        let tableView = UITableView(frame: .zero,
-                                    style: .insetGrouped)
-        tableView.backgroundColor = .mainWhite
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-        self.tableView = tableView
+        setupConstraints()
     }
     
-    private func setupTableViewConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

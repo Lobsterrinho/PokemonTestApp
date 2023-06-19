@@ -10,11 +10,29 @@ import UIKit
 
 final class PokemonListTableCell: UITableViewCell {
     
-    private weak var titleLabel: UILabel!
-    private weak var iconImage: UIImageView!
+    private let iconImage: UIImageView = {
+        let iconImage = UIImageView()
+        iconImage.image = UIImage(named: "pokeballTableIcon")
+        iconImage.translatesAutoresizingMaskIntoConstraints = false
+        return iconImage
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Label"
+        label.font = UIFont.systemFont(ofSize: 20.0,
+                                       weight: .medium)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+   
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(iconImage)
+        addSubview(titleLabel)
         
         setupViewsAndConstraints()
     }
@@ -28,34 +46,10 @@ final class PokemonListTableCell: UITableViewCell {
     }
     
     private func setupViewsAndConstraints() {
-        
-        setupIconImage()
-        setupIconImageConstraints()
-        
-        setupTitleLable()
-        setupTitleLableConstraints()
+        setupConstraints()
     }
     
-    private func setupIconImage() {
-        let iconImage = UIImageView()
-        iconImage.image = UIImage(named: "pokeballTableIcon")
-        iconImage.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(iconImage)
-        self.iconImage = iconImage
-    }
-    
-    private func setupTitleLable() {
-        let label = UILabel()
-        label.text = "Label"
-        label.font = UIFont.systemFont(ofSize: 20.0,
-                                       weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
-        self.titleLabel = label
-    }
-    
-    private func setupIconImageConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             iconImage.widthAnchor.constraint(equalToConstant: 30.0),
             iconImage.topAnchor.constraint(equalTo: self.topAnchor,
@@ -63,12 +57,8 @@ final class PokemonListTableCell: UITableViewCell {
             iconImage.leadingAnchor.constraint(equalTo: self.leadingAnchor,
                                                constant: 20.0),
             iconImage.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                              constant: -10.0)
-        ])
-    }
-    
-    private func setupTitleLableConstraints() {
-        NSLayoutConstraint.activate([
+                                              constant: -10.0),
+            
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
                                             constant: 10.0),
             titleLabel.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor,
@@ -79,5 +69,4 @@ final class PokemonListTableCell: UITableViewCell {
                                                constant: -10.0)
         ])
     }
-    
 }

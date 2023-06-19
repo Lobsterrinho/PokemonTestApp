@@ -20,14 +20,7 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let ud = UserDefaults.standard
-        ud.set(true, forKey: "isInternetConnected")
-        let isInternetConnected = UserDefaults.standard.bool(forKey: "isInternetConnected")
-        if isInternetConnected {
-            openPokemonsListScene()
-        } else {
-            openPokemonsOffline()
-        }
+        openPokemonsListScene()
         window?.makeKeyAndVisible()
     }
     
@@ -47,32 +40,10 @@ final class AppCoordinator: Coordinator {
         pokemonListCoordinator.start()
         window = listWindow
     }
-    
-    private func openPokemonsOffline() {
-        let pokemonsWindow = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController()
-        pokemonsWindow.rootViewController = navigationController
-        let pokemonOfflineCoordinator = PokemonOfflineCoordinator(
-            rootNavigationController: navigationController,
-            rootCoordinator: self
-        )
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.tintColor = .black
-        childCoordinators.append(pokemonOfflineCoordinator)
-        pokemonOfflineCoordinator.start()
-        window = pokemonsWindow
-    }
- }
+}
 
 extension AppCoordinator: PokemonListRootCoordinatorProtocol {
     func pokemonListSceneDidFinished(_ coordinator: Coordinator) {
-        childCoordinators.removeAll(where: { $0 === coordinator })
-        start()
-    }
-}
-
-extension AppCoordinator: PokemonOfflineRootCoordintorProtocol {
-    func pokemonOfflineSceneDidFinished(_ coordinator: Coordinator) {
         childCoordinators.removeAll(where: { $0 === coordinator })
         start()
     }

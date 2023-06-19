@@ -10,8 +10,19 @@ import UIKit
 
 final class PokemonListVC: UIViewController {
     
-    private weak var tableView: UITableView!
-    private weak var activityIndicator: UIActivityIndicatorView!
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero,
+                                    style: .insetGrouped)
+        tableView.backgroundColor = .mainWhite
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
     
     private var viewModel: PokemonListVMProtocol
     
@@ -48,46 +59,23 @@ final class PokemonListVC: UIViewController {
         
         view.backgroundColor = .mainWhite
         
-        setupTableView()
-        setupTableViewConstraints()
-        
-        setupActivityIndicator()
-        setupActivityIndicatorConstraints()
-    }
-    
-    private func setupTableView() {
-        let tableView = UITableView(frame: .zero,
-                                    style: .insetGrouped)
-        tableView.backgroundColor = .mainWhite
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-        self.tableView = tableView
-    }
-    
-    private func setupActivityIndicator() {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
-        view.bringSubviewToFront(activityIndicator)
-        self.activityIndicator = activityIndicator
+        
+        setupConstraints()
     }
     
-    private func setupTableViewConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-    
-    private func setupActivityIndicatorConstraints() {
-        NSLayoutConstraint.activate([
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-    
 }
 
 extension PokemonListVC: ViewModelDelegate {

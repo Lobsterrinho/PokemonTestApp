@@ -10,7 +10,10 @@ import Foundation
 import CoreData
 
 
-extension PokemonList {
+@objc(PokemonList)
+public class PokemonList: NSManagedObject { }
+
+extension PokemonList: Identifiable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<PokemonList> {
         return NSFetchRequest<PokemonList>(entityName: "PokemonList")
@@ -18,9 +21,5 @@ extension PokemonList {
 
     @NSManaged public var url: String
     @NSManaged public var name: String
-
-}
-
-extension PokemonList : Identifiable {
 
 }

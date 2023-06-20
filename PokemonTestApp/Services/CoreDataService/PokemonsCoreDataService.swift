@@ -13,7 +13,6 @@ final class PokemonsCoreDataService {
     
     public static let shared = PokemonsCoreDataService()
     
-    
     public var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }

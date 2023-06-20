@@ -12,7 +12,8 @@ final class InternetConnectionMonitorServiceAssembler {
     private init() { }
     
     static func makeInternetConnectionMonitorService(
+        container: Container
     ) -> InternetConnectionMonitorServiceProtocol {
-        return InternetConnectionMonitorService()
+        return container.resolve()
     }
 }

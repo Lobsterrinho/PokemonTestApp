@@ -13,12 +13,16 @@ final class PokemonDetailsCoordinator: Coordinator {
     private var rootNavigationController: UINavigationController
     private var rootCoordinator: PokemonDetailsRootCoordinatorProtocol
     
+    private var container: Container
+    
     var childCoordinators: [Coordinator] = []
     
     init(rootNavigationController: UINavigationController,
-         rootCoordinator: PokemonDetailsRootCoordinatorProtocol) {
+         rootCoordinator: PokemonDetailsRootCoordinatorProtocol,
+         container: Container) {
         self.rootNavigationController = rootNavigationController
         self.rootCoordinator = rootCoordinator
+        self.container = container
     }
     
     func start() {
@@ -26,10 +30,9 @@ final class PokemonDetailsCoordinator: Coordinator {
     }
     
     func start(pokemon: PokemonResult) {
-        let pokemonDetailsVC = PokemonDetailsAssembler.makePokemonDetailsVC(
-            coordinator: self,
-            pokemon: pokemon
-        )
+        let pokemonDetailsVC = PokemonDetailsAssembler.makeVC(coordinator: self,
+                                                              container: container,
+                                                              pokemon: pokemon)
         rootNavigationController.pushViewController(pokemonDetailsVC,
                                                     animated: true)
     }

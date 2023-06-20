@@ -13,6 +13,12 @@ final class AppCoordinator: Coordinator {
     private var windowScene: UIWindowScene
     private var window: UIWindow?
     
+    private var container: Container = {
+        let container = Container()
+        ServiceConfiguration.configure(container: container)
+        return container
+    }()
+    
     var childCoordinators: [Coordinator] = []
     
     init(windowScene: UIWindowScene) {
@@ -32,7 +38,8 @@ final class AppCoordinator: Coordinator {
         listWindow.rootViewController = navigationController
         let pokemonListCoordinator = PokemonListCoordinator(
             rootNavigationController: navigationController,
-            rootCoordinator: self
+            rootCoordinator: self,
+            container: container
         )
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.tintColor = .black

@@ -13,46 +13,29 @@ final class PokemonListAssembler {
     private init() { }
     
     static func makeVC(
-        coordinator: PokemonListCoordinatorProtocol
+        coordinator: PokemonListCoordinatorProtocol,
+        container: Container
     ) -> UIViewController {
-        let viewModel = makeViewModel(coordinator: coordinator)
+        let viewModel = makeVM(coordinator: coordinator,
+                               container: container)
+        
         return PokemonListVC(viewModel: viewModel)
     }
     
-    private static func makeViewModel(
-        coordinator: PokemonListCoordinatorProtocol
+    private static func makeVM(
+        coordinator: PokemonListCoordinatorProtocol,
+        container: Container
     ) -> PokemonListVMProtocol {
+        let adapter = PokemonListAdapter()
+        let networkService: NetworkServiceProtocol = container.resolve()
+        let alertFactory: AlertFactoryProtocol = container.resolve()
+        let coreDataManager: CoreDataManagerProtocol = container.resolve()
+        
         return PokemonListVM(coordinator: coordinator,
-                             adapter: makeAdapter(),
-                             networkService: makeNetworkService(),
-                             alertFactory: makeAlertFactory(),
-                             coreDataManager: makeGetCoreData())
-    }
-    
-    private static func makeAdapter() -> PokemonListAdapterProtocol {
-        return PokemonListAdapter()
-    }
-    
-    private static func makeNetworkService() -> PokemonListNetworkServiceProtocol {
-        return NetworkService(networkSession: URLSession.shared,
-                              internetConnectionMonitor: makeInternetConnectionMonitor(), coreDataManager: makeCoreDataManager())
-    }
-    
-    private static func makeAlertFactory() -> AlertControllerFactoryProtocol {
-        return AlertControllerFactory()
-    }
-    
-    private static func makeInternetConnectionMonitor(
-    ) -> InternetConnectionMonitorServiceProtocol {
-        return InternetConnectionMonitorServiceAssembler.makeInternetConnectionMonitorService()
-    }
-    
-    private static func makeCoreDataManager() -> SavePokemonCoreDataManagerProtocol {
-        return PokemonCoreDataManager()
-    }
-    
-    private static func makeGetCoreData() -> GetPokemonCoreDataManagerProtocol {
-        return PokemonCoreDataManager()
+                             adapter: adapter,
+                             networkService: networkService,
+                             alertFactory: alertFactory,
+                             coreDataManager: coreDataManager)
     }
     
 }

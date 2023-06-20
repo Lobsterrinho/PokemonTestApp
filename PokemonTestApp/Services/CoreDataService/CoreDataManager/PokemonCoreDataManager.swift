@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class PokemonCoreDataManager {
+final class PokemonCoreDataManager: CoreDataManagerProtocol {
     
     private let coreDataService = PokemonsCoreDataService.shared
     

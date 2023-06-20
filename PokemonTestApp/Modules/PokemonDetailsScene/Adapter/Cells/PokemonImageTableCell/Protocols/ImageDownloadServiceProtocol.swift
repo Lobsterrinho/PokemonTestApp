@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ImageDownloadServiceProtocol {
+protocol ImageDownloadServiceProtocol: AnyObject {
     
     func downloadImage(from urlStr: String,
                        completion: @escaping DownloadHandler)

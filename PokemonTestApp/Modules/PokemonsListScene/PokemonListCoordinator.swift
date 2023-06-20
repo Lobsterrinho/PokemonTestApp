@@ -13,16 +13,21 @@ final class PokemonListCoordinator: Coordinator {
     private var rootNavigationController: UINavigationController
     private var rootCoordinator: PokemonListRootCoordinatorProtocol
     
+    private var container: Container
+    
     var childCoordinators: [Coordinator] = []
     
     init(rootNavigationController: UINavigationController,
-         rootCoordinator: PokemonListRootCoordinatorProtocol) {
+         rootCoordinator: PokemonListRootCoordinatorProtocol,
+         container: Container) {
         self.rootNavigationController = rootNavigationController
         self.rootCoordinator = rootCoordinator
+        self.container = container
     }
     
     func start() {
-        let pokemonListViewController = PokemonListAssembler.makeVC(coordinator: self)
+        let pokemonListViewController = PokemonListAssembler.makeVC(coordinator: self,
+                                                                    container: container)
         rootNavigationController.pushViewController(pokemonListViewController,
                                                     animated: false)
     }
@@ -43,7 +48,8 @@ extension PokemonListCoordinator: PokemonListCoordinatorProtocol {
     func openPokemonDetailsScene(pokemon: PokemonResult) {
         let pokemonDetailsCoordinator = PokemonDetailsCoordinator(
             rootNavigationController: rootNavigationController,
-            rootCoordinator: self
+            rootCoordinator: self,
+            container: container
         )
         childCoordinators.append(pokemonDetailsCoordinator)
         pokemonDetailsCoordinator.start(pokemon: pokemon)

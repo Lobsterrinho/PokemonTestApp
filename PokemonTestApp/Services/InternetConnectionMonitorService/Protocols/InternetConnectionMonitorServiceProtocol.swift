@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol InternetConnectionMonitorServiceProtocol {
+protocol InternetConnectionMonitorServiceProtocol: AnyObject {
     
     func checkInternetConnection(completion: @escaping (Bool) -> Void)
 }

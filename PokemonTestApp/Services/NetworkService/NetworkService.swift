@@ -12,7 +12,7 @@ typealias ListResultHandler = (Result<PokemonListModel, Error>) -> Void
 typealias DetailsResultHandler = (Result<PokemonDetailsModel, Error>) -> Void
 
 
-final class NetworkService {
+final class NetworkService: NetworkServiceProtocol {
     
     private let coreDataManager: SavePokemonCoreDataManagerProtocol
     

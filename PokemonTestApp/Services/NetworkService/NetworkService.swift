@@ -36,11 +36,13 @@ final class NetworkService: NetworkServiceProtocol {
         completion: @escaping ListResultHandler
     ) {
         let offset = currentPage * itemsPerPage
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=\(itemsPerPage)&offset=\(offset)")
+        
+        let endpoint = URLEndpoint.pokemonsList(itemsPerPage: itemsPerPage, offset: offset)
+        
         internetConnectionMonitor.checkInternetConnection { isConnected in
             if isConnected {
                 NetworkService.createRequest(
-                    with: url,
+                    with: endpoint.url,
                     type: .GET
                 ) { request in
                     self.networkSession.callDataTask(
@@ -74,17 +76,18 @@ final class NetworkService: NetworkServiceProtocol {
     
     // MARK: Method to get pokemon details
     func getPokemonDetails(
-        url: String,
+        pokemonName: String,
         completion: @escaping DetailsResultHandler
     ) {
-        guard let url = URL(string: url)
-        else { completion(.failure(FetchError.badURL))
-            return }
+        
+        let endpoint = URLEndpoint.pokemonDetails(pokemonName: pokemonName)
         
         internetConnectionMonitor.checkInternetConnection { isConnected in
             if isConnected {
-                NetworkService.createRequest(with: url,
-                                   type: .GET) { request in
+                NetworkService.createRequest(
+                    with: endpoint.url,
+                    type: .GET
+                ) { request in
                     self.networkSession.callDataTask(
                         with: request
                     )

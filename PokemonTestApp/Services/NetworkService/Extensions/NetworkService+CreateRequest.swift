@@ -9,7 +9,7 @@ import Foundation
 
 extension NetworkService {
     
-    static func createRequest(with url: URL?, type: HTTPMethod, completion: @escaping (URLRequest) -> Void) {
+    static func createRequest(with url: URL?, type: HTTPMethodEndpoint, completion: @escaping (URLRequest) -> Void) {
         guard let apiURL = url else { return }
         var request = URLRequest(url: apiURL)
         request.httpMethod = type.rawValue

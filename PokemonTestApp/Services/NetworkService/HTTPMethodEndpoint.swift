@@ -1,5 +1,5 @@
 //
-//  Endpoints.swift
+//  HTTPMethodEndpoint.swift
 //  PokemonTestApp
 //
 //  Created by Lobster on 10.05.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+enum HTTPMethodEndpoint: String {
     case GET
     case PUT
     case POST

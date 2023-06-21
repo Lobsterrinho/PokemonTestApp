@@ -69,7 +69,8 @@
 		BA449D1B2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA449D1A2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift */; };
 		BA7CB7432A4310DF001D979E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA7CB7452A4310DF001D979E /* Localizable.strings */; };
 		BA7CB7492A43126B001D979E /* LocalizationConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7CB7482A43126B001D979E /* LocalizationConsts.swift */; };
-		BA8E49002A0B6027005CF65F /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E48FF2A0B6026005CF65F /* Endpoints.swift */; };
+		BA7CB74D2A432603001D979E /* URLEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7CB74C2A432603001D979E /* URLEndpoint.swift */; };
+		BA8E49002A0B6027005CF65F /* HTTPMethodEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E48FF2A0B6026005CF65F /* HTTPMethodEndpoint.swift */; };
 		BA8E49022A0B606C005CF65F /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E49012A0B606C005CF65F /* FetchError.swift */; };
 		BAD5E5D92A40EFB300EA34F8 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5E5D82A40EFB300EA34F8 /* Container.swift */; };
 		BAD5E5DB2A40EFC800EA34F8 /* ServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5E5DA2A40EFC800EA34F8 /* ServiceConfiguration.swift */; };
@@ -154,7 +155,8 @@
 		BA7CB7462A431103001D979E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BA7CB7472A431103001D979E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA7CB7482A43126B001D979E /* LocalizationConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationConsts.swift; sourceTree = "<group>"; };
-		BA8E48FF2A0B6026005CF65F /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		BA7CB74C2A432603001D979E /* URLEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEndpoint.swift; sourceTree = "<group>"; };
+		BA8E48FF2A0B6026005CF65F /* HTTPMethodEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodEndpoint.swift; sourceTree = "<group>"; };
 		BA8E49012A0B606C005CF65F /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		BAD5E5D82A40EFB300EA34F8 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		BAD5E5DA2A40EFC800EA34F8 /* ServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfiguration.swift; sourceTree = "<group>"; };
@@ -511,7 +513,8 @@
 				BA449D192A0DBFE800CB5899 /* Extensions */,
 				BA449CF72A0D402600CB5899 /* Protocols */,
 				BA210E552A0598FF00A11855 /* NetworkService.swift */,
-				BA8E48FF2A0B6026005CF65F /* Endpoints.swift */,
+				BA8E48FF2A0B6026005CF65F /* HTTPMethodEndpoint.swift */,
+				BA7CB74C2A432603001D979E /* URLEndpoint.swift */,
 				BA8E49012A0B606C005CF65F /* FetchError.swift */,
 			);
 			path = NetworkService;
@@ -672,7 +675,7 @@
 				BA210EB22A0802F000A11855 /* PokemonListLastCellDelegate.swift in Sources */,
 				BA210EA72A06E22C00A11855 /* ImageDownloadServiceAssembler.swift in Sources */,
 				BA7CB7492A43126B001D979E /* LocalizationConsts.swift in Sources */,
-				BA8E49002A0B6027005CF65F /* Endpoints.swift in Sources */,
+				BA8E49002A0B6027005CF65F /* HTTPMethodEndpoint.swift in Sources */,
 				BA210E392A053EF300A11855 /* PokemonListCoordinator.swift in Sources */,
 				BA210E8A2A066D8E00A11855 /* ViewModelDelegate.swift in Sources */,
 				BA210EA12A06E04300A11855 /* ImageDownloadService.swift in Sources */,
@@ -689,6 +692,7 @@
 				BA449CFB2A0D500700CB5899 /* PokemonsCoreDataService.swift in Sources */,
 				BA210E972A06B81D00A11855 /* PokemonImageTableCell.swift in Sources */,
 				BA210E4B2A054BA500A11855 /* PokemonListTableCell.swift in Sources */,
+				BA7CB74D2A432603001D979E /* URLEndpoint.swift in Sources */,
 				BA210E142A0537C300A11855 /* AppDelegate.swift in Sources */,
 				BA210E6F2A06363600A11855 /* PokemonDetailsCoordinatorProtocol.swift in Sources */,
 				BA210E612A06316E00A11855 /* PokemonListAdapterActionDelegate.swift in Sources */,

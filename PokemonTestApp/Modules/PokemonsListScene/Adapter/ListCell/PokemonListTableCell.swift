@@ -53,20 +53,20 @@ final class PokemonListTableCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImage.widthAnchor.constraint(equalToConstant: 30.0),
             iconImage.topAnchor.constraint(equalTo: self.topAnchor,
-                                           constant: 10.0),
+                                           constant: GlobalConsts.defaultSpaceConstraint),
             iconImage.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                               constant: 20.0),
+                                               constant: GlobalConsts.doubledDefaultSpaceConstraint),
             iconImage.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                              constant: -10.0),
+                                              constant: -GlobalConsts.defaultSpaceConstraint),
             
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
-                                            constant: 10.0),
+                                            constant: GlobalConsts.defaultSpaceConstraint),
             titleLabel.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor,
-                                                constant: 10.0),
+                                                constant: GlobalConsts.defaultSpaceConstraint),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -20.0),
+                                                 constant: -GlobalConsts.defaultSpaceConstraint),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                               constant: -10.0)
+                                               constant: -GlobalConsts.defaultSpaceConstraint)
         ])
     }
 }

@@ -9,6 +9,10 @@ import UIKit
 
 final class PokemonImageTableCell: UITableViewCell {
     
+    private enum Consts {
+        static let heightAndWidth = UITableViewCell().frame.width / 1.5
+    }
+    
     private weak var pokemonImage: UIImageView!
     private weak var activityIndicator: UIActivityIndicatorView!
     
@@ -73,15 +77,14 @@ final class PokemonImageTableCell: UITableViewCell {
     }
     
     private func setupPokemonImageConstraints() {
-        let heightAndWidth = self.frame.width / 1.5
         NSLayoutConstraint.activate([
-            pokemonImage.widthAnchor.constraint(equalToConstant: heightAndWidth),
-            pokemonImage.heightAnchor.constraint(equalToConstant: heightAndWidth),
+            pokemonImage.widthAnchor.constraint(equalToConstant: Consts.heightAndWidth),
+            pokemonImage.heightAnchor.constraint(equalToConstant: Consts.heightAndWidth),
             pokemonImage.topAnchor.constraint(equalTo: self.topAnchor,
-                                              constant: 10.0),
+                                              constant: GlobalConsts.defaultSpaceConstraint),
             pokemonImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             pokemonImage.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                 constant: -10.0)
+                                                 constant: -GlobalConsts.defaultSpaceConstraint)
         ])
     }
     

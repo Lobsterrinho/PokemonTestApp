@@ -50,9 +50,9 @@ final class LoaderTableCellPrototype: UITableViewCell {
             activityIndicator.widthAnchor.constraint(equalToConstant: widthOrHeight),
             activityIndicator.heightAnchor.constraint(equalToConstant: widthOrHeight),
             activityIndicator.topAnchor.constraint(equalTo: self.topAnchor,
-                                                   constant: 10.0),
+                                                   constant: GlobalConsts.defaultSpaceConstraint),
             activityIndicator.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                      constant: -10.0)
+                                                      constant: -GlobalConsts.defaultSpaceConstraint)
         ])
     }
 }

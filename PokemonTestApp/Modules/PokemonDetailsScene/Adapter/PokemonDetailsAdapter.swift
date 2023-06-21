@@ -83,11 +83,21 @@ extension PokemonDetailsAdapter: UITableViewDataSource {
             imageCell?.setup(imageURL: imageURL)
             return imageCell ?? UITableViewCell()
         case 1:
-            infoCell?.setup(option: "Pokemon type: " + typesString)
+            let pokemonType = NSLocalizedString(LocalizationConsts.pokemonType,
+                                                comment: "")
+            infoCell?.setup(option: pokemonType + ": " + typesString)
         case 2:
-            infoCell?.setup(option: "Pokemon height: " + String(height) + " cm")
+            let pokemonHeight = NSLocalizedString(LocalizationConsts.pokemonHeight,
+                                                comment: "")
+            let pokemonCM = NSLocalizedString(LocalizationConsts.pokemonCM,
+                                                comment: "")
+            infoCell?.setup(option: pokemonHeight + ": " + String(height) + pokemonCM)
         case 3:
-            infoCell?.setup(option: "Pokemon weight: " + String(weight) + " kg")
+            let pokemonWeight = NSLocalizedString(LocalizationConsts.pokemonWeight,
+                                                comment: "")
+            let pokemonKG = NSLocalizedString(LocalizationConsts.pokemonKG,
+                                                comment: "")
+            infoCell?.setup(option: pokemonWeight + ": " + String(weight) + pokemonKG)
         default: break
         }
         return infoCell ?? UITableViewCell()

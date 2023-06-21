@@ -29,7 +29,7 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
         }
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView?.rowHeight = 50.0
+        tableView?.rowHeight = GlobalConsts.rowHeight
     }
     
     func setupPokemons(_ pokemons: [PokemonResult]) {

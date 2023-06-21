@@ -67,10 +67,13 @@
 		BA449D0B2A0DBA2900CB5899 /* GetPokemonCoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA449D0A2A0DBA2900CB5899 /* GetPokemonCoreDataManagerProtocol.swift */; };
 		BA449D102A0DBB9200CB5899 /* DetailsNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA449D0F2A0DBB9200CB5899 /* DetailsNetworkServiceProtocol.swift */; };
 		BA449D1B2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA449D1A2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift */; };
+		BA7CB7432A4310DF001D979E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA7CB7452A4310DF001D979E /* Localizable.strings */; };
+		BA7CB7492A43126B001D979E /* LocalizationConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7CB7482A43126B001D979E /* LocalizationConsts.swift */; };
 		BA8E49002A0B6027005CF65F /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E48FF2A0B6026005CF65F /* Endpoints.swift */; };
 		BA8E49022A0B606C005CF65F /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E49012A0B606C005CF65F /* FetchError.swift */; };
 		BAD5E5D92A40EFB300EA34F8 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5E5D82A40EFB300EA34F8 /* Container.swift */; };
 		BAD5E5DB2A40EFC800EA34F8 /* ServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5E5DA2A40EFC800EA34F8 /* ServiceConfiguration.swift */; };
+		BAD5E5DE2A41D62300EA34F8 /* GlobalConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5E5DD2A41D62300EA34F8 /* GlobalConsts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,10 +150,15 @@
 		BA449D0A2A0DBA2900CB5899 /* GetPokemonCoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonCoreDataManagerProtocol.swift; sourceTree = "<group>"; };
 		BA449D0F2A0DBB9200CB5899 /* DetailsNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		BA449D1A2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+CreateRequest.swift"; sourceTree = "<group>"; };
+		BA7CB7442A4310DF001D979E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA7CB7462A431103001D979E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BA7CB7472A431103001D979E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA7CB7482A43126B001D979E /* LocalizationConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationConsts.swift; sourceTree = "<group>"; };
 		BA8E48FF2A0B6026005CF65F /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		BA8E49012A0B606C005CF65F /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		BAD5E5D82A40EFB300EA34F8 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		BAD5E5DA2A40EFC800EA34F8 /* ServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfiguration.swift; sourceTree = "<group>"; };
+		BAD5E5DD2A41D62300EA34F8 /* GlobalConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConsts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +200,9 @@
 		BA210E122A0537C300A11855 /* PokemonTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				BA7CB7402A431092001D979E /* Localization */,
 				BA210E2B2A053A3300A11855 /* Application */,
+				BAD5E5DC2A41D60D00EA34F8 /* Enums */,
 				BA210E732A0659AF00A11855 /* Models */,
 				BA210E2C2A053A3F00A11855 /* Modules */,
 				BA210E2D2A053A4900A11855 /* Services */,
@@ -487,6 +497,14 @@
 			path = ImageCacheService;
 			sourceTree = "<group>";
 		};
+		BA7CB7402A431092001D979E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				BA7CB7452A4310DF001D979E /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		BA8E49032A0B62C3005CF65F /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +532,15 @@
 				BAD5E5DA2A40EFC800EA34F8 /* ServiceConfiguration.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		BAD5E5DC2A41D60D00EA34F8 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				BAD5E5DD2A41D62300EA34F8 /* GlobalConsts.swift */,
+				BA7CB7482A43126B001D979E /* LocalizationConsts.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -581,6 +608,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = BA210E072A0537C300A11855;
 			productRefGroup = BA210E112A0537C300A11855 /* Products */;
@@ -599,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA210E232A0537C700A11855 /* LaunchScreen.storyboard in Resources */,
+				BA7CB7432A4310DF001D979E /* Localizable.strings in Resources */,
 				BA210E202A0537C700A11855 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +654,7 @@
 				BA210E9F2A06DF2D00A11855 /* PokemonImageTableCellVMProtocol.swift in Sources */,
 				BA210E912A068A7100A11855 /* PokemonDetailsAdapterProtocol.swift in Sources */,
 				BA210E462A054AC100A11855 /* PokemonListAdapter.swift in Sources */,
+				BAD5E5DE2A41D62300EA34F8 /* GlobalConsts.swift in Sources */,
 				BA210E432A053F3800A11855 /* PokemonListRootCoordinatorProtocol.swift in Sources */,
 				BA210E412A053F2700A11855 /* PokemonListVMProtocol.swift in Sources */,
 				BA210EB02A07FA4300A11855 /* LoaderTableCellPrototype.swift in Sources */,
@@ -641,6 +671,7 @@
 				BA210E362A053DE400A11855 /* PokemonListAssembler.swift in Sources */,
 				BA210EB22A0802F000A11855 /* PokemonListLastCellDelegate.swift in Sources */,
 				BA210EA72A06E22C00A11855 /* ImageDownloadServiceAssembler.swift in Sources */,
+				BA7CB7492A43126B001D979E /* LocalizationConsts.swift in Sources */,
 				BA8E49002A0B6027005CF65F /* Endpoints.swift in Sources */,
 				BA210E392A053EF300A11855 /* PokemonListCoordinator.swift in Sources */,
 				BA210E8A2A066D8E00A11855 /* ViewModelDelegate.swift in Sources */,
@@ -704,8 +735,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				BA210E222A0537C700A11855 /* Base */,
+				BA7CB7462A431103001D979E /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BA7CB7452A4310DF001D979E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA7CB7442A4310DF001D979E /* en */,
+				BA7CB7472A431103001D979E /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -715,6 +756,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -775,6 +817,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

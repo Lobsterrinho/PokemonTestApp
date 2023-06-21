@@ -45,13 +45,13 @@ final class PokemonDetailsTableCell: UITableViewCell {
     private func setupTitleLableConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
-                                            constant: 10.0),
+                                            constant: GlobalConsts.defaultSpaceConstraint),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                constant: 10.0),
+                                                constant: GlobalConsts.defaultSpaceConstraint),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -20.0),
+                                                 constant: -GlobalConsts.defaultSpaceConstraint),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                               constant: -10.0)
+                                               constant: -GlobalConsts.defaultSpaceConstraint)
         ])
     }
 }

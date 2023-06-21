@@ -10,7 +10,8 @@ import UIKit
 final class AlertControllerFactory: AlertFactoryProtocol {
     
     private enum Const {
-        static let cancel: String = "Cancel"
+        static let cancel: String = NSLocalizedString(LocalizationConsts.cancel,
+                                                      comment: "")
     }
     
     typealias AlertActionHandler = () -> Void

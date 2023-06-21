@@ -24,7 +24,6 @@
 		BA210E462A054AC100A11855 /* PokemonListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E452A054AC100A11855 /* PokemonListAdapter.swift */; };
 		BA210E482A054AC900A11855 /* PokemonListAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E472A054AC900A11855 /* PokemonListAdapterProtocol.swift */; };
 		BA210E4B2A054BA500A11855 /* PokemonListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E4A2A054BA500A11855 /* PokemonListTableCell.swift */; };
-		BA210E542A05903300A11855 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E532A05903300A11855 /* Extension+UIColor.swift */; };
 		BA210E562A0598FF00A11855 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E552A0598FF00A11855 /* NetworkService.swift */; };
 		BA210E582A0599A000A11855 /* PokemonListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E572A0599A000A11855 /* PokemonListModel.swift */; };
 		BA210E5A2A059D6700A11855 /* PokemonListNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210E592A059D6700A11855 /* PokemonListNetworkServiceProtocol.swift */; };
@@ -107,7 +106,6 @@
 		BA210E452A054AC100A11855 /* PokemonListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListAdapter.swift; sourceTree = "<group>"; };
 		BA210E472A054AC900A11855 /* PokemonListAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListAdapterProtocol.swift; sourceTree = "<group>"; };
 		BA210E4A2A054BA500A11855 /* PokemonListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListTableCell.swift; sourceTree = "<group>"; };
-		BA210E532A05903300A11855 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		BA210E552A0598FF00A11855 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BA210E572A0599A000A11855 /* PokemonListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListModel.swift; sourceTree = "<group>"; };
 		BA210E592A059D6700A11855 /* PokemonListNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListNetworkServiceProtocol.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 				BA210E2C2A053A3F00A11855 /* Modules */,
 				BA210E2D2A053A4900A11855 /* Services */,
 				BA210EA92A07060300A11855 /* Factory */,
-				BA210E522A05901400A11855 /* GlobalExtensions */,
 				BA210E2A2A0539D600A11855 /* Resources */,
 			);
 			path = PokemonTestApp;
@@ -315,14 +312,6 @@
 				BA210E4A2A054BA500A11855 /* PokemonListTableCell.swift */,
 			);
 			path = ListCell;
-			sourceTree = "<group>";
-		};
-		BA210E522A05901400A11855 /* GlobalExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				BA210E532A05903300A11855 /* Extension+UIColor.swift */,
-			);
-			path = GlobalExtensions;
 			sourceTree = "<group>";
 		};
 		BA210E5F2A06315400A11855 /* Protocols */ = {
@@ -682,7 +671,6 @@
 				BA210E642A06357400A11855 /* PokemonDetailsCoordinator.swift in Sources */,
 				BA210E682A06358600A11855 /* PokemonDetailsVM.swift in Sources */,
 				BA449CF22A0D348200CB5899 /* InternetConnectionMonitorService.swift in Sources */,
-				BA210E542A05903300A11855 /* Extension+UIColor.swift in Sources */,
 				BA210E322A053AA300A11855 /* Coordinator.swift in Sources */,
 				BA449D1B2A0DC00C00CB5899 /* NetworkService+CreateRequest.swift in Sources */,
 				BA210E9D2A06DF1C00A11855 /* PokemonImageTableCellVMAssembler.swift in Sources */,

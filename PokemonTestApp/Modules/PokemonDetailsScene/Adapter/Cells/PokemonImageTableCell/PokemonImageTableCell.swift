@@ -55,6 +55,8 @@ final class PokemonImageTableCell: UITableViewCell {
     
     private func setupViewsAndConstraints() {
         
+        backgroundColor = UIColor(named: GlobalConsts.backgroundCellColor)
+        
         setupPokemonImage()
         setupPokemonImageConstraints()
         

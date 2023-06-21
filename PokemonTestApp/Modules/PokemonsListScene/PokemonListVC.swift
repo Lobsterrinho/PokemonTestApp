@@ -13,7 +13,7 @@ final class PokemonListVC: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,
                                     style: .insetGrouped)
-        tableView.backgroundColor = .mainWhite
+        tableView.backgroundColor = UIColor(named: GlobalConsts.backgroundColor)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -57,7 +57,7 @@ final class PokemonListVC: UIViewController {
     
     private func setupViewsAndConstraints() {
         
-        view.backgroundColor = .mainWhite
+        view.backgroundColor = UIColor(named: GlobalConsts.backgroundColor)
         
         view.addSubview(tableView)
         view.addSubview(activityIndicator)

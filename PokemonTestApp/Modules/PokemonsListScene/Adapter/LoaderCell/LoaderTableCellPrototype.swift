@@ -40,7 +40,7 @@ final class LoaderTableCellPrototype: UITableViewCell {
         
         setupConstraints()
     }
-
+    
     
     private func setupConstraints() {
         let widthOrHeight = self.frame.height - 20

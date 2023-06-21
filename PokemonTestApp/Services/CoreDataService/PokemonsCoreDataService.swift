@@ -9,10 +9,6 @@ import CoreData
 
 final class PokemonsCoreDataService {
     
-    private init() { }
-    
-    public static let shared = PokemonsCoreDataService()
-    
     public var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }

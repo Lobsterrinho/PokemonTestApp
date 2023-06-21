@@ -10,6 +10,10 @@ import UIKit
 
 final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
     
+    private enum Const {
+        static var cell: String = "Cell"
+    }
+    
     private weak var tableView: UITableView?
     private var pokemons: [PokemonResult] = []
     private var isInternetAvailable: Bool = false
@@ -53,7 +57,7 @@ final class PokemonListAdapter: NSObject, PokemonListAdapterProtocol {
                             forCellReuseIdentifier: "\(LoaderTableCellPrototype.self)")
         
         tableView?.register(UITableViewCell.self,
-                            forCellReuseIdentifier: "Cell")
+                            forCellReuseIdentifier: Const.cell)
     }
     
     func setupAdapterActionDelegate(_ delegate: PokemonListAdapterActionDelegate) {
@@ -85,7 +89,7 @@ extension PokemonListAdapter: UITableViewDataSource {
             for: indexPath
         ) as? LoaderTableCellPrototype
         
-        let standartCell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+        let standartCell = tableView.dequeueReusableCell(withIdentifier: Const.cell,
                                                          for: indexPath)
         
         switch indexPath.row {

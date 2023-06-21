@@ -22,11 +22,11 @@ final class PokemonListTableCell: UITableViewCell {
         label.text = "Label"
         label.font = UIFont.systemFont(ofSize: 20.0,
                                        weight: .medium)
-        label.textColor = .black
+        label.textColor = UIColor(named: GlobalConsts.textColor)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-   
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,6 +46,7 @@ final class PokemonListTableCell: UITableViewCell {
     }
     
     private func setupViewsAndConstraints() {
+        backgroundColor = UIColor(named: GlobalConsts.backgroundCellColor)
         setupConstraints()
     }
     

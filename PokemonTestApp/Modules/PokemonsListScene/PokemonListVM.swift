@@ -53,9 +53,11 @@ final class PokemonListVM: PokemonListVMProtocol {
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlert(message: """
+                    self.showAlert(
+                        message: """
                                    \(error.localizedDescription)
-                                   The app will work in offline mode
+                                   \(NSLocalizedString(LocalizationConsts.offlineModeError,
+                                comment: ""))
                                 """)
                 }
             case .success(let pokemonsListModel):
@@ -73,7 +75,8 @@ final class PokemonListVM: PokemonListVMProtocol {
     
     private func showAlert(message: String) {
         let alert = alertFactory.makeAlert(
-            title: "Error",
+            title: NSLocalizedString(LocalizationConsts.error,
+                                     comment: ""),
             message: message,
             actions: [
                 .cancel({

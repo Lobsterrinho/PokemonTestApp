@@ -32,7 +32,7 @@ final class ImageDownloadService: ImageDownloadServiceProtocol {
         
         var request = URLRequest(url: url)
         request.timeoutInterval = 5
-        request.httpMethod = "GET"
+        request.httpMethod = HTTPMethodEndpoint.GET.rawValue
         
         currentRequest = request
         

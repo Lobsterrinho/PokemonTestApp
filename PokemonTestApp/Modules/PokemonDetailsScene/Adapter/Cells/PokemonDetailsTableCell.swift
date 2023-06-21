@@ -27,6 +27,8 @@ final class PokemonDetailsTableCell: UITableViewCell {
     
     private func setupViewsAndConstraints() {
         
+        backgroundColor = UIColor(named: GlobalConsts.backgroundCellColor)
+        
         setupTitleLable()
         setupTitleLableConstraints()
     }
@@ -36,7 +38,7 @@ final class PokemonDetailsTableCell: UITableViewCell {
         label.text = "Label"
         label.font = UIFont.systemFont(ofSize: 20.0,
                                        weight: .regular)
-        label.textColor = .black
+        label.textColor = UIColor(named: GlobalConsts.textColor)
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         self.titleLabel = label

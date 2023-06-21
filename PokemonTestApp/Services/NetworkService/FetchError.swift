@@ -17,11 +17,11 @@ extension FetchError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noResponce:
-            return "Unable to get pokemons."
+            return NSLocalizedString(LocalizationConsts.apiError, comment: "") + "."
         case .noInternet:
-            return "No internet connection."
+            return NSLocalizedString(LocalizationConsts.noInternetError, comment: "") + "."
         case .badURL:
-            return "Chech for URL correct"
+            return NSLocalizedString(LocalizationConsts.checkURLError, comment: "") + "."
         }
     }
 }

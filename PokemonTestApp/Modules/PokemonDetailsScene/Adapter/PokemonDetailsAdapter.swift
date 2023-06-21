@@ -88,15 +88,15 @@ extension PokemonDetailsAdapter: UITableViewDataSource {
             infoCell?.setup(option: pokemonType + ": " + typesString)
         case 2:
             let pokemonHeight = NSLocalizedString(LocalizationConsts.pokemonHeight,
-                                                comment: "")
+                                                  comment: "")
             let pokemonCM = NSLocalizedString(LocalizationConsts.pokemonCM,
-                                                comment: "")
+                                              comment: "")
             infoCell?.setup(option: pokemonHeight + ": " + String(height) + pokemonCM)
         case 3:
             let pokemonWeight = NSLocalizedString(LocalizationConsts.pokemonWeight,
-                                                comment: "")
+                                                  comment: "")
             let pokemonKG = NSLocalizedString(LocalizationConsts.pokemonKG,
-                                                comment: "")
+                                              comment: "")
             infoCell?.setup(option: pokemonWeight + ": " + String(weight) + pokemonKG)
         default: break
         }

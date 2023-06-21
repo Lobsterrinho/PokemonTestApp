@@ -18,11 +18,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = AppCoordinator(windowScene: windowScene)
         appCoordinator?.start()
     }
-    
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        PokemonsCoreDataService.shared.saveContext()
-    }
-    
-    
 }
 

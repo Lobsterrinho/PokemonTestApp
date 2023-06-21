@@ -35,7 +35,7 @@ final class PokemonDetailsVM: PokemonDetailsVMProtocol {
     }
     
     func loadPokemonDetails() {
-        networkService.getPokemonDetails(pokemonName: pokemon.name.lowercased()) { result in
+        networkService.getPokemonDetails(pokemonName: pokemon.name) { result in
             switch result {
             case .failure(let error):
                 print(error)

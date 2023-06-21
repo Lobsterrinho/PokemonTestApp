@@ -1,5 +1,11 @@
 "pokemon_type" = "Pokemon type";
 "pokemon_height" = "Pokemon height";
 "pokemon_weight" = "Pokemon weight";
+"offline_mode_error" = "The app will work in offline mode";
+"API_error" = "Unable to get pokemons";
+"no_internet_error" = "No internet connection";
+"check_url_error" = "Check for URL correct";
+"error" = "Error";
+"cancel" = "Cancel";
 "cm" = "cm";
 "kg" = "kg";
